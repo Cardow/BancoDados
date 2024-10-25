@@ -23,6 +23,7 @@ DROP TABLE IF EXISTS Fornecedores;
 DROP TABLE IF EXISTS Estoque;
 
 --Tabela de Categorias
+
 CREATE TABLE Categorias (
     categoriaID SERIAL PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
@@ -78,16 +79,55 @@ CREATE TABLE Subcategorias (
     FOREIGN KEY (categoriaID) REFERENCES Categorias (categoriaID)
 );
 
-INSERT INTO Subcategorias(categoriaID, nome, descricao) VALUES 
-(1, "Antibióticos", "Medicamentos usados para tratar infecções bacterianas"),
-(3, "Vitaminas", "Suplementos que fornecem nutrientes essenciais para o corpo"),
-(3, "Proteínas", "Suplementos para ganho de massa muscular e recuperação pós-exercício"),
-(6, "Cremes Corporais", "Produtos para hidratação e cuidados diários com a pele do corpo"),
-(4, "Bebidas Funcionais", "Bebidas formuladas para oferecer benefícios além da nutrição básica"),
-(5, "Medidores de Glicose", "Equipamentos para monitorar os níveis de glicose no sangue"),
-(2, "Óleos essencias", "Óleos para umidifcadores e aromaterapia"),
-(5, "Máscaras e Luvas", "Luvas e Máscaras para proteção bacteriana"),
-(1, "Medicamentos controlados", "Medicamentos tarja preta e vermelha que necessitam de receita médica"),
-(2, "Shampoos e Sabonetes", "Produtos de higiene pessoal");
-
-
+INSERT INTO
+    Subcategorias (categoriaID, nome, descricao)
+VALUES (
+        1,
+        "Antibióticos",
+        "Medicamentos usados para tratar infecções bacterianas"
+    ),
+    (
+        3,
+        "Vitaminas",
+        "Suplementos que fornecem nutrientes essenciais para o corpo"
+    ),
+    (
+        3,
+        "Proteínas",
+        "Suplementos para ganho de massa muscular e recuperação pós-exercício"
+    ),
+    (
+        6,
+        "Cremes Corporais",
+        "Produtos para hidratação e cuidados diários com a pele do corpo"
+    ),
+    (
+        4,
+        "Bebidas Funcionais",
+        "Bebidas formuladas para oferecer benefícios além da nutrição básica"
+    ),
+    (
+        5,
+        "Medidores de Glicose",
+        "Equipamentos para monitorar os níveis de glicose no sangue"
+    ),
+    (
+        2,
+        "Óleos essencias",
+        "Óleos para umidifcadores e aromaterapia"
+    ),
+    (
+        5,
+        "Máscaras e Luvas",
+        "Luvas e Máscaras para proteção bacteriana"
+    ),
+    (
+        1,
+        "Medicamentos controlados",
+        "Medicamentos tarja preta e vermelha que necessitam de receita médica"
+    ),
+    (
+        2,
+        "Shampoos e Sabonetes",
+        "Produtos de higiene pessoal"
+    );
