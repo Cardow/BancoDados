@@ -58,8 +58,8 @@ VALUES (
 );
 
 (
-    "Equipamentos Médicos",
-    "Equipamentos usados para monitoramento e controle de condições de saúde",
+    "Acessórios Médicos",
+    "Acessórios usados para uso no controle de condições de saúde",
     40
 );
 
@@ -131,3 +131,36 @@ VALUES (
         "Shampoos e Sabonetes",
         "Produtos de higiene pessoal"
     );
+
+--Tabela de Produtos
+
+CREATE TABLE Produtos (
+    categoriaID int,
+    subcategoriaID int,
+    nome VARCHAR(50) NOT NULL,
+    descricao text,
+    preco DECIMAL(10, 2) NOT NULL,
+    validade DATE("dd/mm/yyyy"),
+    dosagem VARCHAR(50),
+    data_de_cadastro DATE,
+    fornecedor int,
+    imagem VARCHAR(500),
+    FOREIGN KEY (categoriaID) REFERENCES Categorias (categoriaID),
+    FOREIGN KEY (subcategoriaID) REFERENCES SUbCategorias (subcategoriaID),
+    FOREIGN KEY (fornecedor) REFERENCES Fornecedores(fornecedorID)
+);
+
+INSERT INTO Produtos (categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor) VALUES
+(1, 1, "Amoxicilina", "Antibiótico usado no tratamento de infecções bacterianas",30.00, to_date('10/05/2025','dd/mm/yyyy'), "http://exemplo.com/imagens/amoxicilina.jpg", "500mg", to_date('15/10/2024','dd/mm/yyyy'), 1 ),
+(2, 10, "Sabonete Antibacteriano", "Sabonete para eliminação de germes e bactérias", 50.00, to_date('18/02/2026','dd/mm/yyyy'), "http://exemplo.com/imagens/sabonete.jpg)","100g", to_date('16/10/2024','dd/mm/yyyy'), 5 )
+(3, 2, "Vitamina C", "Suplemento para reforçar imunidade", 22.00, to_date('30/06/2026','dd/mm/yyyy'), "http://exemplo.com/imagens/vitaminac.jpg)", "500mg", to_date('14/10/2024','dd/mm/yyyy'), 3),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor),
+(categoriaID, subcategoria, nome, descricao, preco, validade, imagem, dosagem, data_de_cadastro, fornecedor);
