@@ -676,6 +676,68 @@ VALUES (
 
 --Tabela dos Funcionarios
 
-CREATE TABLE Funcionarios(nome VARCHAR(50) NOT NULL, cidade VARCHAR(100), endereco VARCHAR(300), cargo VARCHAR(300));
-INSERT INTO (nome, cidade, endereco, cargo) VALUES
-("Carlos Silva", "")
+CREATE TABLE Funcionarios (
+    funcionarioID SERIAL PRIMARY KEY
+    nome VARCHAR(50) NOT NULL,
+    e - mail VARCHAR(300) cidade VARCHAR(100),
+    endereco VARCHAR(300),
+    cargo VARCHAR(300)
+);
+
+INSERT INTO (nome, cidade, endereco, cargo)
+VALUES (
+        "Carlos Silva",
+        "carlos.silvia@farmacia.com",
+        "São Paulo",
+        "Rua das Acácias, 200",
+        "Gerente de Vendas"
+    ),
+    (
+        "Amanda Rocha",
+        "amanda.rocha@farmacia.com",
+        "Rio de Janeiro",
+        "Rua Nova Esperança, 500",
+        "Farmacêutica"
+    ),
+    (
+        "Roberto Souza",
+        "roberto.souza@farmacia.com",
+        "Belo Horizonte",
+        "Rua dos Lírios, 120",
+        "Assistente de estoque"
+    ),
+    (
+        "Fernanda Lima",
+        "fernanda.lima@farmacia.com",
+        "Porto Alegre",
+        "Rua São Pedro, 50",
+        "Atendente Virtual"
+    ),
+    (
+        "José Almeida",
+        "jose.almeida@farmacia.com",
+        "Curitiba",
+        "Rua Dom Pedro II, 87",
+        "Gerente de Logística"
+    ),
+    (
+        "Pedro Souza",
+        "pedro.souza@farmacia.com",
+        "Curitiba",
+        "Rua Marechal Deodoro, 278",
+        "Desenvolvedor Web"
+    ),
+    (
+        "Carla Oliveira",
+        "carla.oliveira@farmacia.com",
+        "São Paulo",
+        "Rua Comendador Araújo, 98",
+        "Enfermeiro Consultor"
+    ),
+    (
+        "João Ferreira",
+        "joao.ferreira@farmacia.com",
+        "Manaus",
+        "Rua Visconde de Guarapava, 245",
+        "Atendente Virtual"
+    );
