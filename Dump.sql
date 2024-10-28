@@ -22,18 +22,16 @@ DROP TABLE IF EXISTS Fornecedores CASCADE;
 DROP TABLE IF EXISTS Estoque CASCADE;
 
 --Tabela de Categorias
-CREATE TABLE
-    Categorias (
-        categoriaID SERIAL PRIMARY KEY,
-        nome VARCHAR(50) NOT NULL,
-        descricao text,
-        pontos int
-    );
+CREATE TABLE Categorias (
+    categoriaID SERIAL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    descricao text,
+    pontos int
+);
 
 INSERT INTO
     Categorias (nome, descricao, pontos)
-VALUES
-    (
+VALUES (
         'Medicamentos',
         'Medicamentos de prescrição e de venda livre para o tratamento de diversas condições médicas',
         30
@@ -65,19 +63,17 @@ VALUES
     );
 
 --Tabela de Subcategorias
-CREATE TABLE
-    Subcategorias (
-        subcategoriaID SERIAL PRIMARY KEY,
-        categoriaID INT,
-        nome VARCHAR(50) NOT NULL,
-        descricao TEXT,
-        FOREIGN KEY (categoriaID) REFERENCES Categorias (categoriaID)
-    );
+CREATE TABLE Subcategorias (
+    subcategoriaID SERIAL PRIMARY KEY,
+    categoriaID INT,
+    nome VARCHAR(50) NOT NULL,
+    descricao TEXT,
+    FOREIGN KEY (categoriaID) REFERENCES Categorias (categoriaID)
+);
 
 INSERT INTO
     Subcategorias (categoriaID, nome, descricao)
-VALUES
-    (
+VALUES (
         1,
         'Antibióticos',
         'Medicamentos usados para tratar infecções bacterianas'
@@ -134,17 +130,15 @@ VALUES
     );
 
 --Tabela de fornecedores
-CREATE TABLE
-    Fornecedores (
-        FornecedorID SERIAL PRIMARY KEY,
-        Nome VARCHAR(50),
-        Endereco VARCHAR(250)
-    );
+CREATE TABLE Fornecedores (
+    FornecedorID SERIAL PRIMARY KEY,
+    Nome VARCHAR(50),
+    Endereco VARCHAR(250)
+);
 
 INSERT INTO
     Fornecedores (Nome, Endereco)
-VALUES
-    (
+VALUES (
         'Medley Farmacêutica',
         'Avenida dos Laboratórios 1000, Campinas - SP'
     ),
@@ -185,23 +179,22 @@ VALUES
         'Praça Bem Estar 1515, Fortaleza - CE'
     );
 
-CREATE TABLE
-    Produtos (
-        produtoID SERIAL PRIMARY KEY,
-        categoriaID INT,
-        subcategoriaID INT,
-        nome VARCHAR(50) NOT NULL,
-        descricao TEXT,
-        preco DECIMAL(10, 2) NOT NULL,
-        validade DATE,
-        dosagem VARCHAR(50),
-        data_de_cadastro DATE,
-        fornecedor INT,
-        imagem VARCHAR(500),
-        FOREIGN KEY (categoriaID) REFERENCES Categorias (categoriaID),
-        FOREIGN KEY (subcategoriaID) REFERENCES SubCategorias (subcategoriaID),
-        FOREIGN KEY (fornecedor) REFERENCES Fornecedores (fornecedorID)
-    );
+CREATE TABLE Produtos (
+    produtoID SERIAL PRIMARY KEY,
+    categoriaID INT,
+    subcategoriaID INT,
+    nome VARCHAR(50) NOT NULL,
+    descricao TEXT,
+    preco DECIMAL(10, 2) NOT NULL,
+    validade DATE,
+    dosagem VARCHAR(50),
+    data_de_cadastro DATE,
+    fornecedor INT,
+    imagem VARCHAR(500),
+    FOREIGN KEY (categoriaID) REFERENCES Categorias (categoriaID),
+    FOREIGN KEY (subcategoriaID) REFERENCES SubCategorias (subcategoriaID),
+    FOREIGN KEY (fornecedor) REFERENCES Fornecedores (fornecedorID)
+);
 
 INSERT INTO
     Produtos (
@@ -216,17 +209,16 @@ INSERT INTO
         data_de_cadastro,
         fornecedor
     )
-VALUES
-    (
+VALUES (
         1,
         1,
         'Amoxicilina',
         'Antibiótico usado no tratamento de infecções bacterianas',
         30,
-        to_date ('10/05/2025', 'dd/mm/yyyy'),
+        to_date('10/05/2025', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/amoxicilina.jpg',
         '500mg',
-        to_date ('15/10/2024', 'dd/mm/yyyy'),
+        to_date('15/10/2024', 'dd/mm/yyyy'),
         1
     ),
     (
@@ -234,11 +226,11 @@ VALUES
         11,
         'Sabonete Antibacteriano',
         'Sabonete para eliminação de germes e bactérias',
-        50.00,
-        to_date ('18/02/2026', 'dd/mm/yyyy'),
+        50,
+        to_date('18/02/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/sabonete.jpg',
         '100g',
-        to_date ('16/10/2024', 'dd/mm/yyyy'),
+        to_date('16/10/2024', 'dd/mm/yyyy'),
         5
     ),
     (
@@ -247,10 +239,10 @@ VALUES
         'Vitamina C',
         'Suplemento para reforçar imunidade',
         22,
-        to_date ('30/06/2026', 'dd/mm/yyyy'),
+        to_date('30/06/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/vitaminac.jpg',
         '500mg',
-        to_date ('14/10/2024', 'dd/mm/yyyy'),
+        to_date('14/10/2024', 'dd/mm/yyyy'),
         3
     ),
     (
@@ -259,10 +251,10 @@ VALUES
         'Hidratante Corporal',
         'Creme para hidratação da pele',
         30,
-        to_date ('01/08/2026', 'dd/mm/yyyy'),
+        to_date('01/08/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/hidratante.jpg',
         '200ml',
-        to_date ('12/10/2024', 'dd/mm/yyyy'),
+        to_date('12/10/2024', 'dd/mm/yyyy'),
         2
     ),
     (
@@ -271,10 +263,10 @@ VALUES
         'Losartana',
         'Medicamento para controle da pressão arterial',
         12,
-        to_date ('15/12/2025', 'dd/mm/yyyy'),
+        to_date('15/12/2025', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/losartana.jpg',
         '50mg',
-        to_date ('13/10/2024', 'dd/mm/yyyy'),
+        to_date('13/10/2024', 'dd/mm/yyyy'),
         1
     ),
     (
@@ -283,10 +275,10 @@ VALUES
         'Fluconazol',
         'Medicamento usado para tratar infecções fúngicas',
         16,
-        to_date ('01/08/2025', 'dd/mm/yyyy'),
+        to_date('01/08/2025', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/fluconazol.jpg',
         '150mg',
-        to_date ('12/10/2024', 'dd/mm/yyyy'),
+        to_date('12/10/2024', 'dd/mm/yyyy'),
         4
     ),
     (
@@ -294,11 +286,11 @@ VALUES
         11,
         'Shampoo de Jasmine',
         'Shampoo para cabelos oleosos',
-        26.00,
-        to_date ('18/02/2026', 'dd/mm/yyyy'),
+        26,
+        to_date('18/02/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/shampoojasmine.jpg',
         '300ml',
-        to_date ('11/10/2024', 'dd/mm/yyyy'),
+        to_date('11/10/2024', 'dd/mm/yyyy'),
         3
     ),
     (
@@ -307,10 +299,10 @@ VALUES
         'Whey Protein',
         'Suplemento proteico para aumento de massa muscular',
         150,
-        to_date ('20/08/2026', 'dd/mm/yyyy'),
+        to_date('20/08/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/wheyprotein.jpg',
         '1kg',
-        to_date ('14/10/2024', 'dd/mm/yyyy'),
+        to_date('14/10/2024', 'dd/mm/yyyy'),
         3
     ),
     (
@@ -319,10 +311,10 @@ VALUES
         'Bebida Funcional de Hibisco',
         'Bebida à base de hibisco para controle de peso.',
         12,
-        to_date ('25/03/2026', 'dd/mm/yyyy'),
+        to_date('25/03/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/bebida-hibisco.jpg',
         '300ml',
-        to_date ('11/10/2024', 'dd/mm/yyyy'),
+        to_date('11/10/2024', 'dd/mm/yyyy'),
         4
     ),
     (
@@ -331,10 +323,10 @@ VALUES
         'Medidor de Glicose',
         'Equipamento para monitoramento de glicose no sangue',
         120,
-        to_date ('14/08/2030', 'dd/mm/yyyy'),
+        to_date('14/08/2030', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/medidor-glicose.jpg',
         'Não se Aplica',
-        to_date ('17/10/2024', 'dd/mm/yyyy'),
+        to_date('17/10/2024', 'dd/mm/yyyy'),
         2
     ),
     (
@@ -342,11 +334,11 @@ VALUES
         6,
         'Termômetro Digital Clínico',
         'Termômetro digital para medição de temperatura corporal',
-        35.00,
-        to_date ('30/01/2031', 'dd/mm/yyyy'),
+        35,
+        to_date('30/01/2031', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/termometro.jpg',
         'Não se Aplica',
-        to_date ('25/10/2025', 'dd/mm/yyyy'),
+        to_date('25/10/2025', 'dd/mm/yyyy'),
         1
     ),
     (
@@ -355,10 +347,10 @@ VALUES
         'Ibuprofeno',
         'Medicamento utilizado para aliviar dores e inflamações',
         15,
-        to_date ('25/10/2025', 'dd/mm/yyyy'),
+        to_date('25/10/2025', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/ibuprofeno.jpg',
         '400mg',
-        to_date ('28/08/2024', 'dd/mm/yyyy'),
+        to_date('28/08/2024', 'dd/mm/yyyy'),
         3
     ),
     (
@@ -367,10 +359,10 @@ VALUES
         'Paracetamol',
         'Medicamento utilizado para aliviar dores e febre',
         9,
-        to_date ('10/11/2025', 'dd/mm/yyyy'),
+        to_date('10/11/2025', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/paracetamol.jpg',
         '500mg',
-        to_date ('05/10/2024', 'dd/mm/yyyy'),
+        to_date('05/10/2024', 'dd/mm/yyyy'),
         1
     ),
     (
@@ -379,10 +371,10 @@ VALUES
         'Máscaras Descartáveis',
         'Máscaras descartáveis com tripla camada',
         30,
-        to_date ('20/09/2026', 'dd/mm/yyyy'),
+        to_date('20/09/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/mascaras.jpg',
         'Não se Aplica',
-        to_date ('18/07/2024', 'dd/mm/yyyy'),
+        to_date('18/07/2024', 'dd/mm/yyyy'),
         5
     ),
     (
@@ -391,10 +383,10 @@ VALUES
         'Óleo Essencial de Lavanda',
         'Óleos essenciais com propriedades calmantes',
         28,
-        to_date ('30/08/2026', 'dd/mm/yyyy'),
+        to_date('30/08/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/lavanda.jpg',
         '10ml',
-        to_date ('06/04/2024', 'dd/mm/yyyy'),
+        to_date('06/04/2024', 'dd/mm/yyyy'),
         2
     ),
     (
@@ -403,10 +395,10 @@ VALUES
         'Óleo Essencial de Eucalipto',
         'Óleos essenciais para aliviar congestão nasal',
         25,
-        to_date ('12/04/2026', 'dd/mm/yyyy'),
+        to_date('12/04/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/eucalipto.jpg',
         '10ml',
-        to_date ('09/05/2024', 'dd/mm/yyyy'),
+        to_date('09/05/2024', 'dd/mm/yyyy'),
         4
     ),
     (
@@ -415,10 +407,10 @@ VALUES
         'Protetor Solar',
         'Protetor FPS 50 que protege contra raios UV',
         45,
-        to_date ('15/04/2026', 'dd/mm/yyyy'),
+        to_date('15/04/2026', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/protetorsolar.jpg',
         '200ml',
-        to_date ('10/10/2024', 'dd/mm/yyyy'),
+        to_date('10/10/2024', 'dd/mm/yyyy'),
         5
     ),
     (
@@ -427,27 +419,26 @@ VALUES
         'Luvas de Procedimento',
         'Luvas descartáveis em Latex',
         45,
-        to_date ('18/06/2027', 'dd/mm/yyyy'),
+        to_date('18/06/2027', 'dd/mm/yyyy'),
         'http://exemplo.com/imagens/luvas.jpg',
         'Não se Aplica',
-        to_date ('25/07/2024', 'dd/mm/yyyy'),
+        to_date('25/07/2024', 'dd/mm/yyyy'),
         4
     );
 
 --Tabela dos Clientes
-CREATE TABLE
-    Clientes (
-        clienteID SERIAL PRIMARY KEY,
-        nome VARCHAR(50) NOT NULL,
-        email VARCHAR(100),
-        senha VARCHAR(250) NOT NULL,
-        cpf VARCHAR(11) NOT NULL,
-        genero VARCHAR(50),
-        data_de_nascimento DATE,
-        cidade VARCHAR(50) NOT NULL,
-        endereco VARCHAR(300) NOT NULL,
-        pontos INT
-    );
+CREATE TABLE Clientes (
+    clienteID SERIAL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(100),
+    senha VARCHAR(250) NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    genero VARCHAR(50),
+    data_de_nascimento DATE,
+    cidade VARCHAR(50) NOT NULL,
+    endereco VARCHAR(300) NOT NULL,
+    pontos INT
+);
 
 INSERT INTO
     Clientes (
@@ -461,14 +452,13 @@ INSERT INTO
         endereco,
         pontos
     )
-VALUES
-    (
+VALUES (
         'Mariana Silva',
         'mariana.silva@gmail.com',
         '@Tacademy2024',
         '12345678910',
         'Feminino',
-        to_date ('15/05/1990', 'dd/mm/yyyy'),
+        to_date('15/05/1990', 'dd/mm/yyyy'),
         'São Paulo',
         'Rua das Flores, 100',
         90
@@ -479,7 +469,7 @@ VALUES
         '@Tacademy2024',
         '98765432100',
         'Masculino',
-        to_date ('22/08/1985', 'dd/mm/yyyy'),
+        to_date('22/08/1985', 'dd/mm/yyyy'),
         'Belo Horizonte',
         'Rua Liberdade, 80',
         105
@@ -490,7 +480,7 @@ VALUES
         '@Tacademy2024',
         '87654321098',
         'Feminino',
-        to_date ('08/06/1987', 'dd/mm/yyyy'),
+        to_date('08/06/1987', 'dd/mm/yyyy'),
         'Rio de Janeiro',
         'Avenida Central, 450',
         200
@@ -501,7 +491,7 @@ VALUES
         '@Tacademy2024',
         '87654321098',
         'Masculino',
-        to_date ('14/03/1995', 'dd/mm/yyyy'),
+        to_date('14/03/1995', 'dd/mm/yyyy'),
         'Campinas',
         'Rua das Flores, 120',
         150
@@ -512,7 +502,7 @@ VALUES
         '@Tacademy2024',
         '34567890123',
         'Feminino',
-        to_date ('29/09/1991', 'dd/mm/yyyy'),
+        to_date('29/09/1991', 'dd/mm/yyyy'),
         'Salvador',
         'Rua da Praia, 35',
         85
@@ -523,7 +513,7 @@ VALUES
         '@Tacademy2024',
         '56789012345',
         'Masculino',
-        to_date ('10/04/1994', 'dd/mm/yyyy'),
+        to_date('10/04/1994', 'dd/mm/yyyy'),
         'Fortaleza',
         'Avenida Beira Mar, 710',
         90
@@ -534,7 +524,7 @@ VALUES
         '@Tacademy2024',
         '65432198765',
         'Feminino',
-        to_date ('05/01/1990', 'dd/mm/yyyy'),
+        to_date('05/01/1990', 'dd/mm/yyyy'),
         'Manaus',
         'Rua das Palmeiras, 90',
         110
@@ -545,7 +535,7 @@ VALUES
         '@Tacademy2024',
         '89012345667',
         'Masculino',
-        to_date ('17/12/1985', 'dd/mm/yyyy'),
+        to_date('17/12/1985', 'dd/mm/yyyy'),
         'Recife',
         'Rua do Sol, 150',
         140
@@ -556,7 +546,7 @@ VALUES
         '@Tacademy2024',
         '78901234598',
         'Feminino',
-        to_date ('03/11/1998', 'dd/mm/yyyy'),
+        to_date('03/11/1998', 'dd/mm/yyyy'),
         'Porto Alegre',
         'Rua do Porto, 75',
         75
@@ -567,7 +557,7 @@ VALUES
         '@Tacademy2024',
         '45678912309',
         'Feminino',
-        to_date ('20/11/1993', 'dd/mm/yyyy'),
+        to_date('20/11/1993', 'dd/mm/yyyy'),
         'Recife',
         'Rua Nova, 432',
         95
@@ -578,7 +568,7 @@ VALUES
         '@Tacademy2024',
         '78912345678',
         'Masculino',
-        to_date ('15/07/1989', 'dd/mm/yyyy'),
+        to_date('15/07/1989', 'dd/mm/yyyy'),
         'São Paulo',
         'Avenida Paulista, 290',
         115
@@ -589,7 +579,7 @@ VALUES
         '@Tacademy2024',
         '98765432111',
         'Feminino',
-        to_date ('11/05/1992', 'dd/mm/yyyy'),
+        to_date('11/05/1992', 'dd/mm/yyyy'),
         'Florianópolis',
         'Rua das Olveiras, 85',
         135
@@ -600,7 +590,7 @@ VALUES
         '@Tacademy2024',
         '12345678922',
         'Masculino',
-        to_date ('05/12/1990', 'dd/mm/yyyy'),
+        to_date('05/12/1990', 'dd/mm/yyyy'),
         'Brasília',
         'Avenida Independência, 76',
         70
@@ -611,138 +601,135 @@ VALUES
         '@Tacademy2024',
         '32165498733',
         'Feminino',
-        to_date ('23/08/1996', 'dd/mm/yyyy'),
+        to_date('23/08/1996', 'dd/mm/yyyy'),
         'Curitiba',
         'Rua Bela Vista, 310',
         90
     );
 
 -- Tabela de Pedidos
-CREATE TABLE
-    Pedidos (
-        PedidoID SERIAL PRIMARY KEY,
-        ClienteID INT,
-        DataPedido DATE NOT NULL,
-        Status VARCHAR(50) NOT NULL,
-        FOREIGN KEY (ClienteID) REFERENCES Clientes (ClienteID)
-    );
+CREATE TABLE Pedidos (
+    PedidoID SERIAL PRIMARY KEY,
+    ClienteID INT,
+    DataPedido DATE NOT NULL,
+    Status VARCHAR(50) NOT NULL,
+    FOREIGN KEY (ClienteID) REFERENCES Clientes (ClienteID)
+);
 
 INSERT INTO
     Pedidos (ClienteID, DataPedido, Status)
-VALUES
-    (
+VALUES (
         1,
-        TO_DATE ('27/10/2024', 'DD/MM/YYYY'),
+        TO_DATE('27/10/2024', 'DD/MM/YYYY'),
         'pendente'
     ),
     (
         2,
-        TO_DATE ('28/10/2024', 'DD/MM/YYYY'),
+        TO_DATE('28/10/2024', 'DD/MM/YYYY'),
         'concluído'
     ),
     (
         3,
-        TO_DATE ('29/10/2024', 'DD/MM/YYYY'),
+        TO_DATE('29/10/2024', 'DD/MM/YYYY'),
         'em processamento'
     ),
     (
         4,
-        TO_DATE ('30/10/2024', 'DD/MM/YYYY'),
+        TO_DATE('30/10/2024', 'DD/MM/YYYY'),
         'pendente'
     ),
     (
         5,
-        TO_DATE ('31/10/2024', 'DD/MM/YYYY'),
+        TO_DATE('31/10/2024', 'DD/MM/YYYY'),
         'concluído'
     ),
     (
         6,
-        TO_DATE ('01/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('01/11/2024', 'DD/MM/YYYY'),
         'cancelado'
     ),
     (
         7,
-        TO_DATE ('02/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('02/11/2024', 'DD/MM/YYYY'),
         'pendente'
     ),
     (
         8,
-        TO_DATE ('03/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('03/11/2024', 'DD/MM/YYYY'),
         'concluído'
     ),
     (
         9,
-        TO_DATE ('04/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('04/11/2024', 'DD/MM/YYYY'),
         'em processamento'
     ),
     (
         10,
-        TO_DATE ('05/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('05/11/2024', 'DD/MM/YYYY'),
         'pendente'
     ),
     (
         1,
-        TO_DATE ('06/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('06/11/2024', 'DD/MM/YYYY'),
         'em processamento'
     ),
     (
         2,
-        TO_DATE ('07/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('07/11/2024', 'DD/MM/YYYY'),
         'pendente'
     ),
     (
         3,
-        TO_DATE ('08/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('08/11/2024', 'DD/MM/YYYY'),
         'concluído'
     ),
     (
         4,
-        TO_DATE ('09/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('09/11/2024', 'DD/MM/YYYY'),
         'cancelado'
     ),
     (
         5,
-        TO_DATE ('10/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('10/11/2024', 'DD/MM/YYYY'),
         'pendente'
     ),
     (
         6,
-        TO_DATE ('11/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('11/11/2024', 'DD/MM/YYYY'),
         'concluído'
     ),
     (
         7,
-        TO_DATE ('12/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('12/11/2024', 'DD/MM/YYYY'),
         'em processamento'
     ),
     (
         8,
-        TO_DATE ('13/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('13/11/2024', 'DD/MM/YYYY'),
         'pendente'
     ),
     (
         9,
-        TO_DATE ('14/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('14/11/2024', 'DD/MM/YYYY'),
         'cancelado'
     ),
     (
         10,
-        TO_DATE ('15/11/2024', 'DD/MM/YYYY'),
+        TO_DATE('15/11/2024', 'DD/MM/YYYY'),
         'concluído'
     );
 
 --Tabela de ItensPedido
-CREATE TABLE
-    ItensPedidos (
-        ItemID SERIAL PRIMARY KEY,
-        PedidoID INT,
-        produtoID INT,
-        Quantidade INT NOT NULL,
-        PrecoUnitario DECIMAL(10, 2) NOT NULL,
-        Descontos DECIMAL(10, 2),
-        FOREIGN KEY (PedidoID) REFERENCES Pedidos (PedidoID),
-        FOREIGN KEY (produtoID) REFERENCES Produtos (produtoID)
-    );
+CREATE TABLE ItensPedidos (
+    ItemID SERIAL PRIMARY KEY,
+    PedidoID INT,
+    produtoID INT,
+    Quantidade INT NOT NULL,
+    PrecoUnitario DECIMAL(10, 2) NOT NULL,
+    Descontos DECIMAL(10, 2),
+    FOREIGN KEY (PedidoID) REFERENCES Pedidos (PedidoID),
+    FOREIGN KEY (produtoID) REFERENCES Produtos (produtoID)
+);
 
 INSERT INTO
     ItensPedidos (
@@ -752,16 +739,13 @@ INSERT INTO
         PrecoUnitario,
         Descontos
     )
-VALUES
-    (
+VALUES (
         1,
         1,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 1
         ),
@@ -772,10 +756,8 @@ VALUES
         2,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 2
         ),
@@ -786,10 +768,8 @@ VALUES
         3,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 3
         ),
@@ -800,10 +780,8 @@ VALUES
         4,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 4
         ),
@@ -814,10 +792,8 @@ VALUES
         5,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 5
         ),
@@ -828,10 +804,8 @@ VALUES
         6,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 6
         ),
@@ -842,10 +816,8 @@ VALUES
         7,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 7
         ),
@@ -856,10 +828,8 @@ VALUES
         8,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 8
         ),
@@ -870,10 +840,8 @@ VALUES
         9,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 9
         ),
@@ -884,10 +852,8 @@ VALUES
         10,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 10
         ),
@@ -898,10 +864,8 @@ VALUES
         11,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 11
         ),
@@ -912,10 +876,8 @@ VALUES
         12,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 12
         ),
@@ -926,10 +888,8 @@ VALUES
         13,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 13
         ),
@@ -940,10 +900,8 @@ VALUES
         14,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 14
         ),
@@ -954,10 +912,8 @@ VALUES
         15,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 15
         ),
@@ -968,10 +924,8 @@ VALUES
         16,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 16
         ),
@@ -982,10 +936,8 @@ VALUES
         17,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 17
         ),
@@ -996,10 +948,8 @@ VALUES
         18,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 18
         ),
@@ -1010,10 +960,8 @@ VALUES
         1,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 1
         ),
@@ -1024,62 +972,258 @@ VALUES
         2,
         1,
         (
-            SELECT
-                preco
-            FROM
-                Produtos
+            SELECT preco
+            FROM Produtos
             WHERE
                 produtoID = 2
         ),
         1
-    );
+    ),
+    (
+        16,
+        3,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 3
+        ),
+        0.5
+    ),
+    (
+        16,
+        4,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 4
+        ),
+        1
+    ),
+        (
+        17,
+        5,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 5
+        ),
+        1.5
+    ),
+        (
+        17,
+        6,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 6
+        ),
+        0.5
+    ),
+        (
+        18,
+        7,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 7
+        ),
+        1
+    ),
+        (
+        18,
+        8,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 8
+        ),
+        1.5
+    ),
+        (
+        19,
+        9,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 9
+        ),
+        0.5
+    ),
+          (
+        19,
+        10,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 10
+        ),
+        2
+    ),
+            (
+        20,
+        11,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 11
+        ),
+        1.5
+    ),
+            (
+        20,
+        12,
+        1,
+        (
+            SELECT preco
+            FROM Produtos
+            WHERE
+                produtoID = 12
+        ),
+        1
+    ),    
 
 --Tabela do Estoque
-CREATE TABLE
-    Estoque (
-        produtoID INT,
-        quantidade INT,
-        validade DATE,
-        FOREIGN KEY (produtoID) REFERENCES Produtos (produtoID)
-    );
+CREATE TABLE Estoque (
+    produtoID INT,
+    quantidade INT,
+    validade DATE,
+    FOREIGN KEY (produtoID) REFERENCES Produtos (produtoID)
+);
 
 INSERT INTO
-    Estoque (produtoID, quantidade, validade)
-VALUES
-    (1, 80, to_date ('10/05/2025', 'dd/mm/yyyy')),
-    (2, 250, to_date ('18/02/2026', 'dd/mm/yyyy')),
-    (3, 310, to_date ('30/06/2026', 'dd/mm/yyyy')),
-    (4, 290, to_date ('01/08/2026', 'dd/mm/yyyy')),
-    (5, 90, to_date ('15/12/2025', 'dd/mm/yyyy')),
-    (6, 110, to_date ('01/08/2025', 'dd/mm/yyyy')),
-    (7, 340, to_date ('18/02/2026', 'dd/mm/yyyy')),
-    (8, 70, to_date ('20/08/2026', 'dd/mm/yyyy')),
-    (9, 45, to_date ('25/03/2026', 'dd/mm/yyyy')),
-    (10, 21, to_date ('14/08/2030', 'dd/mm/yyyy')),
-    (11, 29, to_date ('30/01/2031', 'dd/mm/yyyy')),
-    (12, 101, to_date ('25/10/2025', 'dd/mm/yyyy')),
-    (13, 150, to_date ('10/11/2025', 'dd/mm/yyyy')),
-    (14, 46, to_date ('20/09/2026', 'dd/mm/yyyy')),
-    (15, 167, to_date ('30/08/2026', 'dd/mm/yyyy')),
-    (16, 148, to_date ('12/04/2026', 'dd/mm/yyyy')),
-    (17, 91, to_date ('15/04/2026', 'dd/mm/yyyy')),
-    (18, 41, to_date ('18/06/2027', 'dd/mm/yyyy'));
+    Estoque (
+        produtoID,
+        quantidade,
+        validade
+    )
+VALUES (
+        1,
+        80,
+        to_date('10/05/2025', 'dd/mm/yyyy')
+    ),
+    (
+        2,
+        250,
+        to_date('18/02/2026', 'dd/mm/yyyy')
+    ),
+    (
+        3,
+        310,
+        to_date('30/06/2026', 'dd/mm/yyyy')
+    ),
+    (
+        4,
+        290,
+        to_date('01/08/2026', 'dd/mm/yyyy')
+    ),
+    (
+        5,
+        90,
+        to_date('15/12/2025', 'dd/mm/yyyy')
+    ),
+    (
+        6,
+        110,
+        to_date('01/08/2025', 'dd/mm/yyyy')
+    ),
+    (
+        7,
+        340,
+        to_date('18/02/2026', 'dd/mm/yyyy')
+    ),
+    (
+        8,
+        70,
+        to_date('20/08/2026', 'dd/mm/yyyy')
+    ),
+    (
+        9,
+        45,
+        to_date('25/03/2026', 'dd/mm/yyyy')
+    ),
+    (
+        10,
+        21,
+        to_date('14/08/2030', 'dd/mm/yyyy')
+    ),
+    (
+        11,
+        29,
+        to_date('30/01/2031', 'dd/mm/yyyy')
+    ),
+    (
+        12,
+        101,
+        to_date('25/10/2025', 'dd/mm/yyyy')
+    ),
+    (
+        13,
+        150,
+        to_date('10/11/2025', 'dd/mm/yyyy')
+    ),
+    (
+        14,
+        46,
+        to_date('20/09/2026', 'dd/mm/yyyy')
+    ),
+    (
+        15,
+        167,
+        to_date('30/08/2026', 'dd/mm/yyyy')
+    ),
+    (
+        16,
+        148,
+        to_date('12/04/2026', 'dd/mm/yyyy')
+    ),
+    (
+        17,
+        91,
+        to_date('15/04/2026', 'dd/mm/yyyy')
+    ),
+    (
+        18,
+        41,
+        to_date('18/06/2027', 'dd/mm/yyyy')
+    );
 
 --Tabela dos Funcionarios
-CREATE TABLE
-    Funcionarios (
-        funcionarioID SERIAL PRIMARY KEY,
-        nome VARCHAR(50) NOT NULL,
-        email VARCHAR(300),
-        cidade VARCHAR(100),
-        endereco VARCHAR(300),
-        cargo VARCHAR(300)
-    );
+CREATE TABLE Funcionarios (
+    funcionarioID SERIAL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    email VARCHAR(300),
+    cidade VARCHAR(100),
+    endereco VARCHAR(300),
+    cargo VARCHAR(300)
+);
 
 INSERT INTO
-    Funcionarios (nome, email, cidade, endereco, cargo)
-VALUES
-    (
+    Funcionarios (
+        nome,
+        email,
+        cidade,
+        endereco,
+        cargo
+    )
+VALUES (
         'Carlos Silva',
         'carlos.silvia@farmacia.com',
         'São Paulo',
@@ -1136,4 +1280,31 @@ VALUES
         'Atendente Virtual'
     );
 
-teste
+CREATE TABLE Pagamentos (
+    pagamentoID SERIAL PRIMARY KEY,
+    pedidoID INT,
+    preco_final INT,
+    metodo_pagamento VARCHAR(100),
+    FOREIGN KEY pedidoID REFERENCES Pedidos (pedidoID)
+);
+INSERT INTO Pagamentos (pedidoID, preco_final, metodo_pagamento) VALUES
+(1, 30, 'Cartão de Crédito'),
+(2, 50, 'Cartão de Débito'),
+(3, 22, 'Cartão de Débito'),
+(4, 30, 'Pix'),
+(5, 12, 'Pix'),
+(6, 16, 'Cartão de Crédito'),
+(7, 26, 'Cartão de Crédito'),
+(8, 150, 'Cartão de Crédito'),
+(9, 12, 'Pix'),
+(10, 120, 'Pix'),
+(11, 50, 'Cartão de Débito'),
+(12, 39, 'Cartão de Crédito'),
+(13, 53, 'Cartão de Crédito'),
+(14, 90, 'Pix'),
+(15, 80, 'Pix'),
+(16, 52, 'Cartão de Débito'),
+(17, 28, 'Cartão de Crédito'),
+(18, 176, 'Pix'),
+(19, 132, 'Cartão de Crédito'),
+(20, 50, 'Cartão de Débito'),
