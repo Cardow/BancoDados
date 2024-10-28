@@ -389,8 +389,8 @@ VALUES (
 --Tabela dos Clientes
 
 CREATE TABLE Clientes (
-    nome VARCHAR(50) NOT NULL,
-    e-mail VARCHAR(100),
+    clienteID SERIAL PRIMARY KEY nome VARCHAR(50) NOT NULL,
+    e - mail VARCHAR(100),
     senha VARCHAR(250) NOT NULL,
     cpf VARCHAR(11) NOT NULL,
     genero VARCHAR(50),
@@ -400,4 +400,169 @@ CREATE TABLE Clientes (
     pontos INT,
 );
 
-INSERT INTO Clientes(nome, e-mail, senha, cpf, genero, data_de_nascimento, cidade, endereco, pontos)
+INSERT INTO
+    Clientes (
+        nome,
+        e - mail,
+        senha,
+        cpf,
+        genero,
+        data_de_nascimento,
+        cidade,
+        endereco,
+        pontos
+    )
+VALUES (
+        "Mariana Silva",
+        "mariana.silva@gmail.com",
+        "@Tacademy2024",
+        "12345678910",
+        "Feminino",
+        to_date('15/05/1990', 'dd/mm/yyyy'),
+        "São Paulo",
+        "Rua das Flores, 100",
+        90
+    ),
+    (
+        "Eduardo Mendes",
+        "eduardo.mendes@gmail.com",
+        "@Tacademy2024",
+        "98765432100",
+        "Masculino",
+        to_date('22/08/1985', 'dd/mm/yyyy'),
+        "Belo Horizonte",
+        "Rua Liberdade, 80",
+        105
+    ),
+    (
+        "Carla Oliveira",
+        "carla.oliveira@gmail.com",
+        "@Tacademy2024",
+        "87654321098",
+        "Feminino",
+        to_date('08/06/1987', 'dd/mm/yyyy'),
+        "Rio de Janeiro",
+        "Avenida Central, 450",
+        200
+    ),
+    (
+        "João Pereira",
+        "joao.pereira@gmail.com",
+        "@Tacademy2024",
+        "87654321098",
+        "Masculino",
+        to_date('14/03/1995', 'dd/mm/yyyy'),
+        "Campinas",
+        "Rua das Flores, 120",
+        150
+    ),
+    (
+        "Beatriz Costa",
+        "beatriz.costa@gmail.com",
+        "@Tacademy2024",
+        "34567890123",
+        "Feminino",
+        to_date('29/09/1991', 'dd/mm/yyyy'),
+        "Salvador",
+        "Rua da Praia, 35",
+        85
+    ),
+    (
+        "Pedro Souza",
+        "pedro.souza@gmail.com",
+        "@Tacademy2024",
+        "56789012345",
+        "Masculino",
+        to_date('10/04/1994', 'dd/mm/yyyy'),
+        "Fortaleza",
+        "Avenida Beira Mar, 710",
+        90
+    ),
+    (
+        "Fernanda Lima",
+        "fernanda.lima@gmail.com",
+        "@Tacademy2024",
+        "65432198765",
+        "Feminino",
+        to_date('05/01/1990', 'dd/mm/yyyy'),
+        "Manaus",
+        "Rua das Palmeiras, 90",
+        110
+    ),
+    (
+        "Lucas Ferreira",
+        "lucas.ferreira@gmail.com",
+        "@Tacademy2024",
+        "89012345667",
+        "Masculino",
+        to_date('17/12/1985', 'dd/mm/yyyy'),
+        "Recife",
+        "Rua do Sol, 150",
+        140
+    ),
+    (
+        "Gabriela Andrade",
+        "gabriela.andrade@gmail.com",
+        "@Tacademy2024",
+        "78901234598",
+        "Feminino",
+        to_date('03/11/1998', 'dd/mm/yyyy'),
+        "Porto Alegre",
+        "Rua do Porto, 75",
+        75
+    ),
+    (
+        "Amanda Carvalho",
+        "amanda.carvalho@gmail.com",
+        "@Tacademy2024",
+        "45678912309",
+        "Feminino",
+        to_date('20/11/1993', 'dd/mm/yyyy'),
+        "Recife",
+        "Rua Nova, 432",
+        95
+    ),
+    (
+        "Ricardo Lima",
+        "ricardo.lima@gmail.com",
+        "@Tacademy2024",
+        "78912345678",
+        "Masculino",
+        to_date('15/07/1989', 'dd/mm/yyyy'),
+        "São Paulo",
+        "Avenida Paulista, 290",
+        115
+    ),
+    (
+        "Mariana Duarte",
+        "mariana.duarte@gmail.com",
+        "@Tacademy2024",
+        "98765432111",
+        "Feminino",
+        to_date('11/05/1992', 'dd/mm/yyyy'),
+        "Florianópolis",
+        "Rua das Olveiras, 85",
+        135
+    ),
+    (
+        "Gustavo Santos",
+        "gustavo.santos@gmail.com",
+        "@Tacademy2024",
+        "12345678922",
+        "Masculino",
+        to_date('05/12/1990', 'dd/mm/yyyy'),
+        "Brasília",
+        "Avenida Independência, 76",
+        70
+    ),
+    (
+        "Sofia Almeida",
+        "sofia.almeida@gmail.com",
+        "@Tacademy2024",
+        "32165498733",
+        "Feminino",
+        to_date('23/08/1996', 'dd/mm/yyyy'),
+        "Curitiba",
+        "Rua Bela Vista, 310",
+        90
+    );
