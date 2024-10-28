@@ -140,7 +140,7 @@ VALUES (
 --Tabela de Produtos
 
 CREATE TABLE Produtos (
-    categoriaID SERIAL PRIMARY KEY,
+    produtoID SERIAL PRIMARY KEY,
     categoriaID INT,
     subcategoriaID INT,
     nome VARCHAR(50) NOT NULL,
@@ -392,11 +392,12 @@ CREATE TABLE Clientes (
     nome VARCHAR(50) NOT NULL,
     e-mail VARCHAR(100),
     senha VARCHAR(250) NOT NULL,
+    cpf VARCHAR(11) NOT NULL,
+    genero VARCHAR(50),
+    data_de_nascimento DATE,
     cidade VARCHAR(50) NOT NULL,
     endereco TEXT,
     pontos INT,
-    genero VARCHAR(50),
-    data_de_nascimento DATE,
-    cpf VARCHAR(11) NOT NULL
 );
 
+INSERT INTO Clientes(nome, e-mail, senha, cpf, genero, data_de_nascimento, cidade, endereco, pontos)
