@@ -73,9 +73,9 @@ VALUES (
 
 CREATE TABLE Subcategorias (
     subcategoriaID SERIAL PRIMARY KEY,
-    categoriaID int,
+    categoriaID INT,
     nome VARCHAR(50) NOT NULL,
-    descricao text,
+    descricao TEXT,
     FOREIGN KEY (categoriaID) REFERENCES Categorias (categoriaID)
 );
 
@@ -140,15 +140,16 @@ VALUES (
 --Tabela de Produtos
 
 CREATE TABLE Produtos (
-    categoriaID int,
-    subcategoriaID int,
+    categoriaID SERIAL PRIMARY KEY,
+    categoriaID INT,
+    subcategoriaID INT,
     nome VARCHAR(50) NOT NULL,
-    descricao text,
+    descricao TEXT,
     preco DECIMAL(10, 2) NOT NULL,
-    validade DATE("dd/mm/yyyy"),
+    validade DATE ("dd/mm/yyyy"),
     dosagem VARCHAR(50),
     data_de_cadastro DATE,
-    fornecedor int,
+    fornecedor INT,
     imagem VARCHAR(500),
     FOREIGN KEY (categoriaID) REFERENCES Categorias (categoriaID),
     FOREIGN KEY (subcategoriaID) REFERENCES SUbCategorias (subcategoriaID),
@@ -174,10 +175,10 @@ VALUES (
         "Amoxicilina",
         "Antibiótico usado no tratamento de infecções bacterianas",
         30,
-        to_date ('10/05/2025', 'dd/mm/yyyy'),
+        to_date('10/05/2025', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/amoxicilina.jpg",
         "500mg",
-        to_date ('15/10/2024', 'dd/mm/yyyy'),
+        to_date('15/10/2024', 'dd/mm/yyyy'),
         1
     ),
     (
@@ -186,10 +187,10 @@ VALUES (
         "Sabonete Antibacteriano",
         "Sabonete para eliminação de germes e bactérias",
         50.00,
-        to_date ('18/02/2026', 'dd/mm/yyyy'),
+        to_date('18/02/2026', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/sabonete.jpg)",
         "100g",
-        to_date ('16/10/2024', 'dd/mm/yyyy'),
+        to_date('16/10/2024', 'dd/mm/yyyy'),
         5
     ),
     (
@@ -198,10 +199,10 @@ VALUES (
         "Vitamina C",
         "Suplemento para reforçar imunidade",
         22,
-        to_date ('30/06/2026', 'dd/mm/yyyy'),
+        to_date('30/06/2026', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/vitaminac.jpg)",
         "500mg",
-        to_date ('14/10/2024', 'dd/mm/yyyy'),
+        to_date('14/10/2024', 'dd/mm/yyyy'),
         3
     ),
     (
@@ -210,10 +211,10 @@ VALUES (
         "Hidratante Corporal",
         "Creme para hidratação da pele",
         30,
-        to_date ('01/08/2026', 'dd/mm/yyyy'),
+        to_date('01/08/2026', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/hidratante.jpg",
         "200ml",
-        to_date ('12/10/2024', 'dd/mm/yyyy'),
+        to_date('12/10/2024', 'dd/mm/yyyy'),
         2
     ),
     (
@@ -222,10 +223,10 @@ VALUES (
         "Losartana",
         "Medicamento para controle da pressão arterial",
         12,
-        to_date ('15/12/2025', 'dd/mm/yyyy'),
+        to_date('15/12/2025', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/losartana.jpg",
         "50mg",
-        to_date ('13/10/2024', 'dd/mm/yyyy'),
+        to_date('13/10/2024', 'dd/mm/yyyy'),
         1
     ),
     (
@@ -234,7 +235,7 @@ VALUES (
         "Fluconazol",
         "Medicamento usado para tratar infecções fúngicas",
         16,
-        to_date ('01/08/2025', 'dd/mm/yyyy'),
+        to_date('01/08/2025', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/fluconazol.jpg",
         "150mg",
         "to_date('12/10/2024','dd/mm/yyyy')",
@@ -249,7 +250,7 @@ VALUES (
         "to_date('18/02/2026','dd/mm/yyyy')",
         "http://exemplo.com/imagens/shampoojasmine.jpg",
         "300ml",
-        to_date ('11/10/2024', 'dd/mm/yyyy'),
+        to_date('11/10/2024', 'dd/mm/yyyy'),
         3
     ),
     (
@@ -258,10 +259,10 @@ VALUES (
         "Whey Protein",
         "Suplemento proteico para aumento de massa muscular",
         150,
-        to_date ('20/08/2026', 'dd/mm/yyyy'),
+        to_date('20/08/2026', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/wheyprotein.jpg",
         "1kg",
-        to_date ('14/10/2024', 'dd/mm/yyyy'),
+        to_date('14/10/2024', 'dd/mm/yyyy'),
         3
     ),
     (
@@ -270,10 +271,10 @@ VALUES (
         "Bebida Funcional de Hibisco",
         "Bebida à base de hibisco para controle de peso.",
         12,
-        to_date ('25/03/2026', 'dd/mm/yyyy'),
+        to_date('25/03/2026', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/bebida-hibisco.jpg",
         "300ml",
-        to_date ('11/10/2024', 'dd/mm/yyyy'),
+        to_date('11/10/2024', 'dd/mm/yyyy'),
         4
     ),
     (
@@ -282,10 +283,10 @@ VALUES (
         "Medidor de Glicose",
         "Equipamento para monitoramento de glicose no sangue",
         120,
-        to_date ('14/08/2030', 'dd/mm/yyyy'),
+        to_date('14/08/2030', 'dd/mm/yyyy'),
         " http://exemplo.com/imagens/medidor-glicose.jpg",
         "Não se Aplica",
-        to_date ('17/10/2024', 'dd/mm/yyyy'),
+        to_date('17/10/2024', 'dd/mm/yyyy'),
         2
     ),
     (
@@ -294,10 +295,10 @@ VALUES (
         "Termômetro Digital Clínico",
         "Termômetro digital para medição de temperatura corporal",
         35.00,
-        to_date ('30/01/2031', 'dd/mm/yyyy'),
+        to_date('30/01/2031', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/termometro.jpg",
         "Não se Aplica",
-        to_date ('25/10/2025', 'dd/mm/yyyy'),
+        to_date('25/10/2025', 'dd/mm/yyyy'),
         1
     ),
     (
@@ -306,10 +307,10 @@ VALUES (
         "Ibuprofeno",
         "Medicamento utilizado para aliviar dores e inflamações",
         15,
-        to_date ('25/10/2025', 'dd/mm/yyyy'),
+        to_date('25/10/2025', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/ibuprofeno.jpg",
         "400mg",
-        to_date ('28/08/2024', 'dd/mm/yyyy'),
+        to_date('28/08/2024', 'dd/mm/yyyy'),
         3
     ),
     (
@@ -318,10 +319,10 @@ VALUES (
         "Paracetamol",
         "Medicamento utilizado para aliviar dores e febre",
         9,
-        to_date ('10/11/2025', 'dd/mm/yyyy'),
+        to_date('10/11/2025', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/paracetamol.jpg",
         "500mg",
-        to_date ('05/10/2024', 'dd/mm/yyyy'),
+        to_date('05/10/2024', 'dd/mm/yyyy'),
         1
     ),
     (
@@ -330,10 +331,10 @@ VALUES (
         "Máscaras Descartáveis",
         "Máscaras descartáveis com tripla camada",
         30,
-        to_date ('20/09/2026', 'dd/mm/yyyy'),
+        to_date('20/09/2026', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/mascaras.jpg",
         "Não se Aplica",
-        to_date ('18/07/2024', 'dd/mm/yyyy'),
+        to_date('18/07/2024', 'dd/mm/yyyy'),
         5
     ),
     (
@@ -342,10 +343,10 @@ VALUES (
         "Óleo Essencial de Lavanda",
         "Óleos essenciais com propriedades calmantes",
         28,
-        to_date ('30/08/2026', 'dd/mm/yyyy'),
+        to_date('30/08/2026', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/lavanda.jpg",
         "10ml",
-        to_date ('06/04/2024', 'dd/mm/yyyy'),
+        to_date('06/04/2024', 'dd/mm/yyyy'),
         2
     ),
     (
@@ -354,10 +355,10 @@ VALUES (
         "Óleo Essencial de Eucalpito",
         "Óleos essenciais para aliviar congestão nasal",
         25,
-        to_date ('12/04/2026', 'dd/mm/yyyy'),
+        to_date('12/04/2026', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/eucalipto.jpg",
         "10ml",
-        to_date ('09/05/2024', 'dd/mm/yyyy'),
+        to_date('09/05/2024', 'dd/mm/yyyy'),
         4
     ),
     (
@@ -366,10 +367,10 @@ VALUES (
         "Protetor Solar",
         "Protetor FPS 50 que protege contra raios UV",
         45,
-        to_date ('15/04/2026', 'dd/mm/yyyy'),
+        to_date('15/04/2026', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/protetorsolar.jpg",
         "200ml",
-        to_date ('10/10/2024', 'dd/mm/yyyy'),
+        to_date('10/10/2024', 'dd/mm/yyyy'),
         5
     ),
     (
@@ -378,9 +379,24 @@ VALUES (
         "Luvas de Procedimento",
         "Luvas descartáveis em Latex",
         45,
-        to_date ('18/16/2027', 'dd/mm/yyyy'),
+        to_date('18/16/2027', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/luvas.jpg",
         "Não se Aplica",
-        to_date ('25/07/2024', 'dd/mm/yyyy'),
+        to_date('25/07/2024', 'dd/mm/yyyy'),
         4
     );
+
+--Tabela dos Clientes
+
+CREATE TABLE Clientes (
+    nome VARCHAR(50) NOT NULL,
+    e-mail VARCHAR(100),
+    senha VARCHAR(250) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    endereco TEXT,
+    pontos INT,
+    genero VARCHAR(50),
+    data_de_nascimento DATE,
+    cpf VARCHAR(11) NOT NULL
+);
+
