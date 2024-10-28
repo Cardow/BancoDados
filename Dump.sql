@@ -152,7 +152,7 @@ CREATE TABLE Produtos (
     fornecedor INT,
     imagem VARCHAR(500),
     FOREIGN KEY (categoriaID) REFERENCES Categorias (categoriaID),
-    FOREIGN KEY (subcategoriaID) REFERENCES SUbCategorias (subcategoriaID),
+    FOREIGN KEY (subcategoriaID) REFERENCES SubCategorias (subcategoriaID),
     FOREIGN KEY (fornecedor) REFERENCES Fornecedores (fornecedorID)
 );
 
@@ -379,7 +379,7 @@ VALUES (
         "Luvas de Procedimento",
         "Luvas descartáveis em Latex",
         45,
-        to_date('18/16/2027', 'dd/mm/yyyy'),
+        to_date('18/06/2027', 'dd/mm/yyyy'),
         "http://exemplo.com/imagens/luvas.jpg",
         "Não se Aplica",
         to_date('25/07/2024', 'dd/mm/yyyy'),
@@ -565,4 +565,110 @@ VALUES (
         "Curitiba",
         "Rua Bela Vista, 310",
         90
+    );
+
+--Tabela do Estoque
+
+CREATE TABLE Estoque (
+    produtoID INT,
+    quantidade INT,
+    validade DATE,
+    FOREIGN KEY produtoID REFERENCES Produtos (produtoID)
+);
+
+INSERT INTO
+    Estoque (
+        produtoID,
+        quantidade,
+        validade
+    )
+VALUES (
+        1,
+        80,
+        to_date('10/05/2025', 'dd/mm/yyyy')
+    ),
+    (
+        2,
+        250,
+        to_date('18/02/2026', 'dd/mm/yyyy')
+    ),
+    (
+        3,
+        310,
+        to_date('30/06/2026', 'dd/mm/yyyy')
+    ),
+    (
+        4,
+        290,
+        to_date('01/08/2026', 'dd/mm/yyyy')
+    ),
+    (
+        5,
+        90,
+        to_date('15/12/2025', 'dd/mm/yyyy')
+    ),
+    (
+        6,
+        110,
+        to_date('01/08/2025', 'dd/mm/yyyy')
+    ),
+    (
+        7,
+        340,
+        to_date('18/02/2026', 'dd/mm/yyyy')
+    ),
+    (
+        8,
+        70,
+        to_date('20/08/2026', 'dd/mm/yyyy')
+    ),
+    (
+        9,
+        45,
+        to_date('25/03/2026', 'dd/mm/yyyy')
+    ),
+    (
+        10,
+        21,
+        to_date('14/08/2030', 'dd/mm/yyyy')
+    ),
+    (
+        11,
+        29,
+        to_date('30/01/2031', 'dd/mm/yyyy')
+    ),
+    (
+        12,
+        101,
+        to_date('25/10/2025', 'dd/mm/yyyy')
+    ),
+    (
+        13,
+        150,
+        to_date('10/11/2025', 'dd/mm/yyyy')
+    ),
+    (
+        14,
+        46,
+        to_date('20/09/2026', 'dd/mm/yyyy')
+    ),
+    (
+        15,
+        167,
+        to_date('30/08/2026', 'dd/mm/yyyy')
+    ),
+    (
+        16,
+        148,
+        to_date('12/04/2026', 'dd/mm/yyyy')
+    ),
+    (
+        17,
+        91,
+        to_date('15/04/2026', 'dd/mm/yyyy')
+    ),
+    (
+        18,
+        41,
+        to_date('18/06/2027', 'dd/mm/yyyy')
     );
