@@ -400,3 +400,25 @@ CREATE TABLE Clientes (
     cpf VARCHAR(11) NOT NULL
 );
 
+--Tabela de Pedidos
+
+CREATE TABLE Pedidos (
+
+)
+
+--Tabela de ItensPedido
+
+CREATE TABLE ItensPedido (
+    ItemID SERIAL PRIMARY KEY,
+    PedidoID INT,
+    ProdutoID INT,
+    Quantidade INT NOT NULL,
+    PrecoUnitario DECIMAL(10, 2) NOT NULL,
+    Descontos DECIMAL(10, 2),
+    FOREIGN KEY (PedidoID) REFERENCES Pedidos(PedidoID),
+    FOREIGN KEY (ProdutoID) REFERENCES Produtos(ProdutoID)
+);
+
+INSERT INTO ItensPedido ( PedidoID, ProdutoID, Quantidade, PrecoUnitario, Descontos )
+VALUES ( 1, 1, 2, (SELECT P.preco FROM Produtos P WHERE P.ProdutoID = 1), (SELECT P.preco * 2 FROM Produtos P WHERE P.ProdutoID = 1) ),
+       ( 1, 2, )
