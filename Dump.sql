@@ -389,14 +389,15 @@ VALUES (
 --Tabela dos Clientes
 
 CREATE TABLE Clientes (
-    clienteID SERIAL PRIMARY KEY nome VARCHAR(50) NOT NULL,
+    clienteID SERIAL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
     e - mail VARCHAR(100),
     senha VARCHAR(250) NOT NULL,
     cpf VARCHAR(11) NOT NULL,
     genero VARCHAR(50),
     data_de_nascimento DATE,
     cidade VARCHAR(50) NOT NULL,
-    endereco TEXT,
+    endereco VARCHAR(300) NOT NULL,
     pontos INT,
 );
 
@@ -672,3 +673,9 @@ VALUES (
         41,
         to_date('18/06/2027', 'dd/mm/yyyy')
     );
+
+--Tabela dos Funcionarios
+
+CREATE TABLE Funcionarios(nome VARCHAR(50) NOT NULL, cidade VARCHAR(100), endereco VARCHAR(300), cargo VARCHAR(300));
+INSERT INTO (nome, cidade, endereco, cargo) VALUES
+("Carlos Silva", "")
