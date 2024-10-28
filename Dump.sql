@@ -1280,6 +1280,7 @@ VALUES (
         'Atendente Virtual'
     );
 
+-- Tabela de Pagamentos
 CREATE TABLE Pagamentos (
     pagamentoID SERIAL PRIMARY KEY,
     pedidoID INT,
