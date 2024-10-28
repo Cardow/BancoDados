@@ -1,4 +1,3 @@
--- Active: 1730127101609@@ep-red-wave-a41xyuo1-pooler.us-east-1.aws.neon.tech@5432
 --Excluir Tabelas
 DROP TABLE IF EXISTS Categorias CASCADE;
 
@@ -186,7 +185,6 @@ VALUES
         'Praça Bem Estar 1515, Fortaleza - CE'
     );
 
---Tabela de Produtos
 CREATE TABLE
     Produtos (
         produtoID SERIAL PRIMARY KEY,
@@ -439,15 +437,184 @@ VALUES
 --Tabela dos Clientes
 CREATE TABLE
     Clientes (
+        clienteID SERIAL PRIMARY KEY,
         nome VARCHAR(50) NOT NULL,
         email VARCHAR(100),
         senha VARCHAR(250) NOT NULL,
-        cidade VARCHAR(50) NOT NULL,
-        endereco TEXT,
-        pontos INT,
+        cpf VARCHAR(11) NOT NULL,
         genero VARCHAR(50),
         data_de_nascimento DATE,
-        cpf VARCHAR(11) NOT NULL
+        cidade VARCHAR(50) NOT NULL,
+        endereco VARCHAR(300) NOT NULL,
+        pontos INT
+    );
+
+INSERT INTO
+    Clientes (
+        nome,
+        email,
+        senha,
+        cpf,
+        genero,
+        data_de_nascimento,
+        cidade,
+        endereco,
+        pontos
+    )
+VALUES
+    (
+        'Mariana Silva',
+        'mariana.silva@gmail.com',
+        '@Tacademy2024',
+        '12345678910',
+        'Feminino',
+        to_date ('15/05/1990', 'dd/mm/yyyy'),
+        'São Paulo',
+        'Rua das Flores, 100',
+        90
+    ),
+    (
+        'Eduardo Mendes',
+        'eduardo.mendes@gmail.com',
+        '@Tacademy2024',
+        '98765432100',
+        'Masculino',
+        to_date ('22/08/1985', 'dd/mm/yyyy'),
+        'Belo Horizonte',
+        'Rua Liberdade, 80',
+        105
+    ),
+    (
+        'Carla Oliveira',
+        'carla.oliveira@gmail.com',
+        '@Tacademy2024',
+        '87654321098',
+        'Feminino',
+        to_date ('08/06/1987', 'dd/mm/yyyy'),
+        'Rio de Janeiro',
+        'Avenida Central, 450',
+        200
+    ),
+    (
+        'João Pereira',
+        'joao.pereira@gmail.com',
+        '@Tacademy2024',
+        '87654321098',
+        'Masculino',
+        to_date ('14/03/1995', 'dd/mm/yyyy'),
+        'Campinas',
+        'Rua das Flores, 120',
+        150
+    ),
+    (
+        'Beatriz Costa',
+        'beatriz.costa@gmail.com',
+        '@Tacademy2024',
+        '34567890123',
+        'Feminino',
+        to_date ('29/09/1991', 'dd/mm/yyyy'),
+        'Salvador',
+        'Rua da Praia, 35',
+        85
+    ),
+    (
+        'Pedro Souza',
+        'pedro.souza@gmail.com',
+        '@Tacademy2024',
+        '56789012345',
+        'Masculino',
+        to_date ('10/04/1994', 'dd/mm/yyyy'),
+        'Fortaleza',
+        'Avenida Beira Mar, 710',
+        90
+    ),
+    (
+        'Fernanda Lima',
+        'fernanda.lima@gmail.com',
+        '@Tacademy2024',
+        '65432198765',
+        'Feminino',
+        to_date ('05/01/1990', 'dd/mm/yyyy'),
+        'Manaus',
+        'Rua das Palmeiras, 90',
+        110
+    ),
+    (
+        'Lucas Ferreira',
+        'lucas.ferreira@gmail.com',
+        '@Tacademy2024',
+        '89012345667',
+        'Masculino',
+        to_date ('17/12/1985', 'dd/mm/yyyy'),
+        'Recife',
+        'Rua do Sol, 150',
+        140
+    ),
+    (
+        'Gabriela Andrade',
+        'gabriela.andrade@gmail.com',
+        '@Tacademy2024',
+        '78901234598',
+        'Feminino',
+        to_date ('03/11/1998', 'dd/mm/yyyy'),
+        'Porto Alegre',
+        'Rua do Porto, 75',
+        75
+    ),
+    (
+        'Amanda Carvalho',
+        'amanda.carvalho@gmail.com',
+        '@Tacademy2024',
+        '45678912309',
+        'Feminino',
+        to_date ('20/11/1993', 'dd/mm/yyyy'),
+        'Recife',
+        'Rua Nova, 432',
+        95
+    ),
+    (
+        'Ricardo Lima',
+        'ricardo.lima@gmail.com',
+        '@Tacademy2024',
+        '78912345678',
+        'Masculino',
+        to_date ('15/07/1989', 'dd/mm/yyyy'),
+        'São Paulo',
+        'Avenida Paulista, 290',
+        115
+    ),
+    (
+        'Mariana Duarte',
+        'mariana.duarte@gmail.com',
+        '@Tacademy2024',
+        '98765432111',
+        'Feminino',
+        to_date ('11/05/1992', 'dd/mm/yyyy'),
+        'Florianópolis',
+        'Rua das Olveiras, 85',
+        135
+    ),
+    (
+        'Gustavo Santos',
+        'gustavo.santos@gmail.com',
+        '@Tacademy2024',
+        '12345678922',
+        'Masculino',
+        to_date ('05/12/1990', 'dd/mm/yyyy'),
+        'Brasília',
+        'Avenida Independência, 76',
+        70
+    ),
+    (
+        'Sofia Almeida',
+        'sofia.almeida@gmail.com',
+        '@Tacademy2024',
+        '32165498733',
+        'Feminino',
+        to_date ('23/08/1996', 'dd/mm/yyyy'),
+        'Curitiba',
+        'Rua Bela Vista, 310',
+        90
     );
 
 -- Tabela de Pedidos
@@ -566,21 +733,21 @@ VALUES
 
 --Tabela de ItensPedido
 CREATE TABLE
-    ItensPedido (
+    ItensPedidos (
         ItemID SERIAL PRIMARY KEY,
         PedidoID INT,
-        ProdutoID INT,
+        produtoID INT,
         Quantidade INT NOT NULL,
         PrecoUnitario DECIMAL(10, 2) NOT NULL,
         Descontos DECIMAL(10, 2),
         FOREIGN KEY (PedidoID) REFERENCES Pedidos (PedidoID),
-        FOREIGN KEY (ProdutoID) REFERENCES Produtos (ProdutoID)
+        FOREIGN KEY (produtoID) REFERENCES Produtos (produtoID)
     );
 
 INSERT INTO
-    ItensPedido (
+    ItensPedidos (
         PedidoID,
-        ProdutoID,
+        produtoID,
         Quantidade,
         PrecoUnitario,
         Descontos
@@ -589,14 +756,14 @@ VALUES
     (
         1,
         1,
-        2,
+        1,
         (
             SELECT
                 preco
             FROM
                 Produtos
             WHERE
-                ProdutoID = 1
+                produtoID = 1
         ),
         0
     ),
@@ -610,9 +777,9 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 2
+                produtoID = 2
         ),
-        5
+        0
     ),
     (
         3,
@@ -624,7 +791,7 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 3
+                produtoID = 3
         ),
         0
     ),
@@ -638,23 +805,23 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 4
+                produtoID = 4
         ),
         0
     ),
     (
         5,
         5,
-        2,
+        1,
         (
             SELECT
                 preco
             FROM
                 Produtos
             WHERE
-                ProdutoID = 5
+                produtoID = 5
         ),
-        2
+        0
     ),
     (
         6,
@@ -666,21 +833,21 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 6
+                produtoID = 6
         ),
         0
     ),
     (
         7,
         7,
-        3,
+        1,
         (
             SELECT
                 preco
             FROM
                 Produtos
             WHERE
-                ProdutoID = 7
+                produtoID = 7
         ),
         0
     ),
@@ -694,23 +861,23 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 8
+                produtoID = 8
         ),
         0
     ),
     (
         9,
         9,
-        2,
+        1,
         (
             SELECT
                 preco
             FROM
                 Produtos
             WHERE
-                ProdutoID = 9
+                produtoID = 9
         ),
-        1
+        0
     ),
     (
         10,
@@ -722,21 +889,21 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 10
+                produtoID = 10
         ),
         0
     ),
     (
         11,
         11,
-        2,
+        1,
         (
             SELECT
                 preco
             FROM
                 Produtos
             WHERE
-                ProdutoID = 11
+                produtoID = 11
         ),
         0
     ),
@@ -750,9 +917,9 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 12
+                produtoID = 12
         ),
-        2
+        1
     ),
     (
         12,
@@ -764,9 +931,9 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 13
+                produtoID = 13
         ),
-        1
+        0
     ),
     (
         12,
@@ -778,21 +945,21 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 14
+                produtoID = 14
         ),
         0
     ),
     (
         13,
         15,
-        2,
+        1,
         (
             SELECT
                 preco
             FROM
                 Produtos
             WHERE
-                ProdutoID = 15
+                produtoID = 15
         ),
         0
     ),
@@ -806,21 +973,21 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 16
+                produtoID = 16
         ),
         1.5
     ),
     (
         14,
         17,
-        3,
+        1,
         (
             SELECT
                 preco
             FROM
                 Produtos
             WHERE
-                ProdutoID = 17
+                produtoID = 17
         ),
         0
     ),
@@ -834,13 +1001,13 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 18
+                produtoID = 18
         ),
         0
     ),
     (
         15,
-        19,
+        1,
         1,
         (
             SELECT
@@ -848,27 +1015,13 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 19
+                produtoID = 1
         ),
-        0
+        0.5
     ),
     (
         15,
-        20,
         2,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 20
-        ),
-        3
-    ),
-    (
-        16,
-        21,
         1,
         (
             SELECT
@@ -876,133 +1029,109 @@ VALUES
             FROM
                 Produtos
             WHERE
-                ProdutoID = 21
+                produtoID = 2
         ),
         1
+    );
+
+--Tabela do Estoque
+CREATE TABLE
+    Estoque (
+        produtoID INT,
+        quantidade INT,
+        validade DATE,
+        FOREIGN KEY (produtoID) REFERENCES Produtos (produtoID)
+    );
+
+INSERT INTO
+    Estoque (produtoID, quantidade, validade)
+VALUES
+    (1, 80, to_date ('10/05/2025', 'dd/mm/yyyy')),
+    (2, 250, to_date ('18/02/2026', 'dd/mm/yyyy')),
+    (3, 310, to_date ('30/06/2026', 'dd/mm/yyyy')),
+    (4, 290, to_date ('01/08/2026', 'dd/mm/yyyy')),
+    (5, 90, to_date ('15/12/2025', 'dd/mm/yyyy')),
+    (6, 110, to_date ('01/08/2025', 'dd/mm/yyyy')),
+    (7, 340, to_date ('18/02/2026', 'dd/mm/yyyy')),
+    (8, 70, to_date ('20/08/2026', 'dd/mm/yyyy')),
+    (9, 45, to_date ('25/03/2026', 'dd/mm/yyyy')),
+    (10, 21, to_date ('14/08/2030', 'dd/mm/yyyy')),
+    (11, 29, to_date ('30/01/2031', 'dd/mm/yyyy')),
+    (12, 101, to_date ('25/10/2025', 'dd/mm/yyyy')),
+    (13, 150, to_date ('10/11/2025', 'dd/mm/yyyy')),
+    (14, 46, to_date ('20/09/2026', 'dd/mm/yyyy')),
+    (15, 167, to_date ('30/08/2026', 'dd/mm/yyyy')),
+    (16, 148, to_date ('12/04/2026', 'dd/mm/yyyy')),
+    (17, 91, to_date ('15/04/2026', 'dd/mm/yyyy')),
+    (18, 41, to_date ('18/06/2027', 'dd/mm/yyyy'));
+
+--Tabela dos Funcionarios
+CREATE TABLE
+    Funcionarios (
+        funcionarioID SERIAL PRIMARY KEY,
+        nome VARCHAR(50) NOT NULL,
+        email VARCHAR(300),
+        cidade VARCHAR(100),
+        endereco VARCHAR(300),
+        cargo VARCHAR(300)
+    );
+
+INSERT INTO
+    Funcionarios (nome, email, cidade, endereco, cargo)
+VALUES
+    (
+        'Carlos Silva',
+        'carlos.silvia@farmacia.com',
+        'São Paulo',
+        'Rua das Acácias, 200',
+        'Gerente de Vendas'
     ),
     (
-        16,
-        22,
-        2,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 22
-        ),
-        0
+        'Amanda Rocha',
+        'amanda.rocha@farmacia.com',
+        'Rio de Janeiro',
+        'Rua Nova Esperança, 500',
+        'Farmacêutica'
     ),
     (
-        17,
-        23,
-        2,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 23
-        ),
-        0
+        'Roberto Souza',
+        'roberto.souza@farmacia.com',
+        'Belo Horizonte',
+        'Rua dos Lírios, 120',
+        'Assistente de estoque'
     ),
     (
-        17,
-        24,
-        1,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 24
-        ),
-        2
+        'Fernanda Lima',
+        'fernanda.lima@farmacia.com',
+        'Porto Alegre',
+        'Rua São Pedro, 50',
+        'Atendente Virtual'
     ),
     (
-        18,
-        25,
-        1,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 25
-        ),
-        0
+        'José Almeida',
+        'jose.almeida@farmacia.com',
+        'Curitiba',
+        'Rua Dom Pedro II, 87',
+        'Gerente de Logística'
     ),
     (
-        18,
-        26,
-        3,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 26
-        ),
-        1
+        'Pedro Souza',
+        'pedro.souza@farmacia.com',
+        'Curitiba',
+        'Rua Marechal Deodoro, 278',
+        'Desenvolvedor Web'
     ),
     (
-        19,
-        27,
-        2,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 27
-        ),
-        0
+        'Carla Oliveira',
+        'carla.oliveira@farmacia.com',
+        'São Paulo',
+        'Rua Comendador Araújo, 98',
+        'Enfermeiro Consultor'
     ),
     (
-        19,
-        28,
-        1,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 28
-        ),
-        0
-    ),
-    (
-        20,
-        29,
-        1,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 29
-        ),
-        1
-    ),
-    (
-        20,
-        30,
-        2,
-        (
-            SELECT
-                preco
-            FROM
-                Produtos
-            WHERE
-                ProdutoID = 30
-        ),
-        2
+        'João Ferreira',
+        'joao.ferreira@farmacia.com',
+        'Manaus',
+        'Rua Visconde de Guarapava, 245',
+        'Atendente Virtual'
     );
