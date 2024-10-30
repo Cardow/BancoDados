@@ -231,7 +231,7 @@ VALUES (
         'http://exemplo.com/imagens/sabonete.jpg',
         '100g',
         to_date('16/10/2024', 'dd/mm/yyyy'),
-        5
+        2
     ),
     (
         3,
@@ -255,7 +255,7 @@ VALUES (
         'http://exemplo.com/imagens/hidratante.jpg',
         '200ml',
         to_date('12/10/2024', 'dd/mm/yyyy'),
-        2
+        4
     ),
     (
         1,
@@ -267,7 +267,7 @@ VALUES (
         'http://exemplo.com/imagens/losartana.jpg',
         '50mg',
         to_date('13/10/2024', 'dd/mm/yyyy'),
-        1
+        5
     ),
     (
         1,
@@ -279,7 +279,7 @@ VALUES (
         'http://exemplo.com/imagens/fluconazol.jpg',
         '150mg',
         to_date('12/10/2024', 'dd/mm/yyyy'),
-        4
+        6
     ),
     (
         2,
@@ -291,7 +291,7 @@ VALUES (
         'http://exemplo.com/imagens/shampoojasmine.jpg',
         '300ml',
         to_date('11/10/2024', 'dd/mm/yyyy'),
-        3
+        7
     ),
     (
         3,
@@ -303,7 +303,7 @@ VALUES (
         'http://exemplo.com/imagens/wheyprotein.jpg',
         '1kg',
         to_date('14/10/2024', 'dd/mm/yyyy'),
-        3
+        8
     ),
     (
         4,
@@ -315,7 +315,7 @@ VALUES (
         'http://exemplo.com/imagens/bebida-hibisco.jpg',
         '300ml',
         to_date('11/10/2024', 'dd/mm/yyyy'),
-        4
+        9
     ),
     (
         5,
@@ -327,7 +327,7 @@ VALUES (
         'http://exemplo.com/imagens/medidor-glicose.jpg',
         'Não se Aplica',
         to_date('17/10/2024', 'dd/mm/yyyy'),
-        2
+        10
     ),
     (
         5,
@@ -351,7 +351,7 @@ VALUES (
         'http://exemplo.com/imagens/ibuprofeno.jpg',
         '400mg',
         to_date('28/08/2024', 'dd/mm/yyyy'),
-        3
+        2
     ),
     (
         1,
@@ -363,7 +363,7 @@ VALUES (
         'http://exemplo.com/imagens/paracetamol.jpg',
         '500mg',
         to_date('05/10/2024', 'dd/mm/yyyy'),
-        1
+        3
     ),
     (
         5,
@@ -375,7 +375,7 @@ VALUES (
         'http://exemplo.com/imagens/mascaras.jpg',
         'Não se Aplica',
         to_date('18/07/2024', 'dd/mm/yyyy'),
-        5
+        4
     ),
     (
         2,
@@ -387,7 +387,7 @@ VALUES (
         'http://exemplo.com/imagens/lavanda.jpg',
         '10ml',
         to_date('06/04/2024', 'dd/mm/yyyy'),
-        2
+        5
     ),
     (
         2,
@@ -399,7 +399,7 @@ VALUES (
         'http://exemplo.com/imagens/eucalipto.jpg',
         '10ml',
         to_date('09/05/2024', 'dd/mm/yyyy'),
-        4
+        6
     ),
     (
         6,
@@ -411,7 +411,7 @@ VALUES (
         'http://exemplo.com/imagens/protetorsolar.jpg',
         '200ml',
         to_date('10/10/2024', 'dd/mm/yyyy'),
-        5
+        7
     ),
     (
         5,
@@ -423,7 +423,7 @@ VALUES (
         'http://exemplo.com/imagens/luvas.jpg',
         'Não se Aplica',
         to_date('25/07/2024', 'dd/mm/yyyy'),
-        4
+        8
     );
 
 --Tabela dos Clientes
