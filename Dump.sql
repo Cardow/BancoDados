@@ -1731,3 +1731,4 @@ VALUES (
         TO_DATE('09/10/2024', 'DD/MM/YYYY'),
         'Entregue'
     );
+    
